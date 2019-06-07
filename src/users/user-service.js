@@ -67,6 +67,12 @@ const UserService = {
     return knex('users').where({id}).first('*');
   },
 
+  findByEmail(knex, email) {
+    return knex('users')
+      .where({email})
+      .first('*');
+  },
+
   hashPassword(password) {
     return bcrypt.hash(password, 10);
   },

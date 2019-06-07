@@ -9,6 +9,8 @@ const UserService = require('../src/users/user-service');
 
 describe('User Endpoints', () => {
   let db;
+  const testUsers = helpers.testUsers();
+
   before('connect db', () => {
     db = knex({
       client: 'pg',
@@ -104,6 +106,21 @@ describe('User Endpoints', () => {
         .expect(400, {message: {error: true, sex: 'sex must be of either male or female'}});
     });
 
+    context('when a user already exists', () => {
+      before('create users', async () => await helpers.createUsers(db, testUsers));
+      it('returns 400 and error message if same email is used', () => {
+      
+        const requestBody = helpers.createNewUserRequest();
+        requestBody.email = testUsers[0].email;
+  
+        return supertest(app)
+          .post('/api/users')
+          .set('Content-Type', 'application/json')
+          .send(requestBody)
+          .expect(400, {message: 'email is already in use'});
+      });
+    });
+    
     it('returns 201, user obj, location and auth headers when saved successfully', () => {
       const requestBody = helpers.createNewUserRequest();
       

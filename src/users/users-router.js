@@ -29,6 +29,11 @@ usersRouter
     }
 
     try {
+      const emailTaken = await UserService.findByEmail(req.app.get('db'), user.email);
+      if (emailTaken) {
+        return next({status: 400, message: 'email is already in use'});
+      }
+
       user.password = await UserService.hashPassword(user.password);
     
       const savedUser = await UserService.insert(req.app.get('db'), user);
