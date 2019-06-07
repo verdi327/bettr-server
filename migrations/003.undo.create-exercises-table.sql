@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS exercises;
+DROP EXTENSION IF EXISTS citext;
+DROP TYPE IF EXISTS movement_type;

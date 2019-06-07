@@ -1,0 +1,39 @@
+{
+  "name": "bettr-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --require test/setup.js --recursive --exit",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "predeploy": "npm audit && NODE_ENV=production npm run migrate",
+    "deploy": "git push heroku master",
+    "migrate": "postgrator --config postgrator-config.js"
+  },
+  "keywords": [],
+  "engines": {
+    "node": "11.14.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.16.5",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
+    "xss": "^1.0.6"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.0",
+    "postgrator-cli": "^3.1.0",
+    "supertest": "^4.0.2"
+  }
+}
