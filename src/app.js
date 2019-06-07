@@ -9,6 +9,7 @@ const usersRouter = require('./users/users-router');
 const cyclesRouter = require('./cycles/cycles-router');
 const authRouter = require('./auth/auth-router');
 const workoutsRouter = require('./workouts/workouts-router');
+const exercisesRouter = require('./exercises/exercises-router');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/cycles', cyclesRouter);
 app.use('/api/workouts', workoutsRouter);
+app.use('/api/exercises', exercisesRouter);
 app.use(errorHandler);
 
 function errorHandler(error, req, res, next) {

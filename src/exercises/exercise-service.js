@@ -26,6 +26,12 @@ const ExerciseService = {
       where tags @> '{"main", "power"}'
       order by random();
     `);
+  },
+
+  findByTitle(knex, title) {
+    return knex('exercises')
+      .where({title})
+      .first('demo_url');
   }
 
 };
