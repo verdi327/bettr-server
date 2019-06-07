@@ -1,29 +1,45 @@
-# Express Boilerplate!
+# About
 
-This is a boilerplate project used for starting new projects!
+This is the backend for `bettr.fit`, a web app for building customized 12 week fitness programs.  The front end client can be found at [https://github.com/verdi327/bettr-server](https://github.com/verdi327/bettr-server).
+
+Major dependencies for this repo include Postgres and Node.
 
 ## Set up
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+To get setup locally, do the following:
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env` and to test `mv example.env .env.test`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
-7. Create your dev and test databases locally
-8. Update the .env file with your database info
-9. Create migrations and run the seed file -- to run test migrations set NODE_ENV - `NODE_ENV=test npm run migrate`
+1. Clone this repository to your machine, `cd` into the directory and run `npm install`
+2. Create the dev and test databases: `createdb -U postgres -d bettr-dev` and `createdb -U postgres -d bettr-test`
 
-## Scripts
+3. Create a `.env` and a `.env.test` file in the project root
 
-Start the application `npm start`
+Inside these files you'll need the following:
 
-Start nodemon for the application `npm run dev`
+````
+NODE_ENV=development
+PORT=8000
 
-Run the tests `npm test`
+MIGRATION_DB_HOST=localhost
+MIGRATION_DB_PORT=5432
+MIGRATION_DB_NAME=bettr-dev
+MIGRATION_DB_USER=postgres
+DEV_DB_URL="postgresql://postgres@localhost/bettr-dev"
 
-## Deploying
+JWT_SECRET=<your-secret-here>
+JWT_EXPIRY='1w'
+````
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+Your `.env.test` will be the same except your database url will be called `TEST_DB_URL`
+
+4. Run the migrations for dev - `npm run migrate`
+5. Run the migrations for test - `NODE_ENV=test npm run migrate`
+6. Seed the database for dev
+
+* `psql -U <db-user> -d bettr-dev -f ./seeds/seed.exercises.sql`
+* `psql -U <db-user> -d bettr-dev -f ./seeds/seed.cardio-workouts.sql`
+* `psql -U <db-user> -d bettr-dev -f ./seeds/seed.hybrid-workouts.sql`
+
+Now, run those three commands above again for the test database as well.
+
+7. Run the tests - `npm t`
+8. Start the app - `npm run dev`
