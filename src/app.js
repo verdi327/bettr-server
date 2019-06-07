@@ -21,7 +21,7 @@ app.use(helmet());
 app.use(express.json());
 
 // whitelist allowed origins
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'https://bettr-fit.now.sh'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'https://bettr-fit.now.sh', 'https://bettr.fit', 'https://www.bettr.fit'];
 app.use(cors({
   origin: function(origin, callback){
     // allow requests with no origin - like mobile apps, curl, postman
