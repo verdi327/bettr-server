@@ -393,7 +393,7 @@ const WorkoutService = {
   },
 
   async findCurrentWeek(knex, cycle_id) {
-    const workouts = await knex('workouts').where({completed: false}).orderBy('week').select('*');
+    const workouts = await knex('workouts').where({cycle_id, completed: false}).orderBy('week').select('*');
     const week = workouts[0].week;
     
     return this.findByWeek(knex, cycle_id, week);

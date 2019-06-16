@@ -647,7 +647,14 @@ describe('WorkoutService', () => {
     describe('findCurrentWeek', () => {
       it('returns the current week of workouts based on what is incomplete', async () => {
         const cycle = await helpers.lastCreatedCycle(db);
+        let weekOne = await db('workouts').where({cycle_id: cycle.id, week: 1});
+        weekOne.forEach(async (w) => {
+          await WorkoutService.updateWorkout(db, w.id, {completed: true});
+        });
         const workouts = await WorkoutService.findCurrentWeek(db, cycle.id);
+        workouts.forEach(w => {
+          expect(w.week).to.equal(2);
+        });
         const week = workouts[0].week;
         const actual = workouts.filter(w => w.week === week);
         expect(actual.length).to.equal(7);
