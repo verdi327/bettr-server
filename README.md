@@ -1,10 +1,35 @@
-# About
+# Bettr Api
 
-This is the backend for `bettr.fit`, a web app for building customized 12 week fitness programs.  The front end client can be found at [https://github.com/verdi327/bettr-server](https://github.com/verdi327/bettr-server).
+Fitness training simplified.  Automatically generate 12 week training programs individualized to your training level, sex and training availability.
 
-Major dependencies for this repo include Postgres and Node.
+This is the backend for `bettr.fit`. The front end client can be found at [https://github.com/verdi327/bettr-server](https://github.com/verdi327/bettr-server).
+
+## Introduction
+
+With so much information available on the web and social media sites around training advice, it's hard to separate fact from fiction. Bettr cuts through the BS and builds 12 week training programs that use evidence based science to create balanced, full body training plans. If you want both better body composition, performance and longevity - bettr is your plan.
+
+## Technology
+
+#### Back End
+
+* Node and Express
+  * Authentication via JWT
+  * RESTful Api
+* Testing
+  * Supertest (integration)
+  * Mocha and Chai (unit)
+* Database
+ * Postgres
+ * Knex.js - SQL wrapper
+
+#### Production
+
+Deployed via Heroku
+
 
 ## Set up
+
+Major dependencies for this repo include Postgres and Node.
 
 To get setup locally, do the following:
 
