@@ -8,6 +8,10 @@ This is the backend for `bettr.fit`. The front end client can be found at [https
 
 With so much information available on the web and social media sites around training advice, it's hard to separate fact from fiction. Bettr cuts through the BS and builds 12 week training programs that use evidence based science to create balanced, full body training plans. If you want both better body composition, performance and longevity - bettr is your plan.
 
+## Quick App Demo
+
+![Imgur](https://i.imgur.com/OyZdffc.gif)
+
 ## Technology
 
 #### Back End
