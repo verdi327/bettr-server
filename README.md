@@ -2,7 +2,9 @@
 
 Fitness training simplified.  Automatically generate 12 week training programs individualized to your training level, sex and training availability.
 
-This is the backend for `bettr.fit`. The front end client can be found at [https://github.com/verdi327/bettr-server](https://github.com/verdi327/bettr-server).
+This is the backend for `bettr.fit`.  A live version of the app can be found at [https://bettr.fit](https://bettr.fit)
+
+The front end client can be found at [https://github.com/verdi327/bettr-server](https://github.com/verdi327/bettr-server).
 
 ## Introduction
 
@@ -23,8 +25,8 @@ With so much information available on the web and social media sites around trai
   * Supertest (integration)
   * Mocha and Chai (unit)
 * Database
- * Postgres
- * Knex.js - SQL wrapper
+  * Postgres
+  * Knex.js - SQL wrapper
 
 #### Production
 
